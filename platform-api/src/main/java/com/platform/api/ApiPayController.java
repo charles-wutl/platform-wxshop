@@ -193,10 +193,9 @@ public class ApiPayController extends ApiBaseAction {
                 // 业务处理
                 OrderVo orderInfo = orderService.queryObject(Integer.valueOf(out_trade_no));
                 orderInfo.setPay_status(2);
+                orderInfo.setOrder_status(201);
+                orderInfo.setShipping_status(0);
                 orderInfo.setPay_time(new Date());
-                if (orderInfo.getOrder_status() == 0) {
-                    orderInfo.setOrder_status(201);
-                }
                 orderService.update(orderInfo);
                 response.getWriter().write(setXml("SUCCESS", "OK"));
             }
